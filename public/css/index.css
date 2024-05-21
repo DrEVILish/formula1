@@ -1,0 +1,45 @@
+/* Style Rules
+
+first name: Regular
+last name: Bold
+*/
+
+@font-face {
+    font-family: Formula1-Regular;
+    src: url(../font/Formula1-Regular.ttf);
+}
+@font-face {
+    font-family: Formula1-Wide;
+    src: url(../font/Formula1-Wide.ttf);
+}
+@font-face {
+    font-family: Formula1-Italic;
+    src: url(../font/Formula1-Italic.ttf);
+}
+@font-face {
+    font-family: Formula1-Bold;
+    src: url(../font/Formula1-Bold.ttf);
+}
+@font-face {
+    font-family: Formula1-Black;
+    src: url(../font/Formula1-Black.ttf);
+}
+@font-face {
+    font-family: Formula1-Year;
+    src: url(../font/F1YEARRegular.ttf);
+}
+
+body {
+    background: none;
+    color: white;
+    font-family: Formula1-Regular;
+    /* font-family: Arial, Helvetica, sans-serif; */
+}
+.root-elm {
+    /* System Designed with 16:9 Aspect Ratio */
+    aspect-ratio: 16 / 9;
+    max-height: 100vh;
+    max-width: calc(100vh * (16 / 9));
+    /* background: greenyellow; */
+    display: flex;
+}

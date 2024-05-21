@@ -1,0 +1,274 @@
+:root {
+    --stripe-thickness: 0.2vb;
+
+    --condition-stripe: hsla(0, 0%, 50%, 0.2);
+
+    --condition-red: repeating-linear-gradient(
+        -45deg,
+        hsl(0, 100%, 50%),
+        hsl(0, 100%, 50%) var(--stripe-thickness),
+        hsl(0, 100%, 40%) var(--stripe-thickness),
+        hsl(0, 100%, 40%) calc(var(--stripe-thickness) * 2)
+    );
+    --condition-yellow: repeating-linear-gradient(
+        -45deg,
+        hsl(60, 100%, 50%),
+        hsl(60, 100%, 50%) var(--stripe-thickness),
+        hsl(60, 100%, 40%) var(--stripe-thickness),
+        hsl(60, 100%, 40%) calc(var(--stripe-thickness) * 2)
+    );
+    --condition-green: repeating-linear-gradient(
+        -45deg,
+        hsl(120, 100%, 50%),
+        hsl(120, 100%, 50%) var(--stripe-thickness),
+        hsl(120, 100%, 40%) var(--stripe-thickness),
+        hsl(120, 100%, 40%) calc(var(--stripe-thickness) * 2)
+    );
+}
+
+.tower::after {
+    content: "";
+
+    top: -1.6vb;
+    left: -1.6vb;
+    bottom: -1.6vb;
+    right: 0;
+
+    background: linear-gradient(rgb(0, 0, 0), rgb(0, 0, 0)) content-box, var(--condition-stripe) border-box;
+    border: 1vb solid transparent;
+
+    border-radius: 4.2vb 0 0 4.2vb;
+    border-right: none;
+    position: absolute;
+
+    filter: drop-shadow(0px 0px 0.3vb rgb(30, 30, 30));
+
+    z-index: -1;
+}
+.tower[data-condition-color="red"] {
+    --condition-color: hsl(0, 100%, 50%);
+    --condition-stripe: var(--condition-red);
+}
+.tower[data-condition-color="yellow"] {
+    --condition-color: hsl(60, 100%, 50%);
+    --condition-stripe: var(--condition-yellow);
+}
+.tower[data-condition-color="green"] {
+    --condition-color: hsl(120, 100%, 50%);
+    --condition-stripe: var(--condition-green);
+}
+
+.tower {
+    width: 24vb;
+    position: relative;
+    margin: auto;
+    margin-left: 7vb;
+    margin-top: 6vb;
+
+    background: linear-gradient(black, black) padding-box,
+        linear-gradient(to right, var(--condition-color, silver) 88%, transparent) border-box;
+
+    border: 0.3vb solid transparent;
+    border-right: inherit;
+    border-radius: 3vb 0 0 3vb;
+
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: min-content auto;
+    grid-gap: 0;
+}
+
+.tower:has(.drivers) {
+    height: 88vb;
+}
+
+.tower header {
+    background: linear-gradient(black, dimgrey);
+    overflow: hidden;
+    border-radius: 3vb 0 0 0;
+}
+
+.tower main {
+    height: 100%;
+    border-radius: 0 0 0 3vb;
+    overflow: hidden;
+}
+
+.title {
+    height: 4.4vb;
+    width: 100%;
+    display: flex;
+}
+
+.title .f1Logo {
+    margin: 0.8vb 0.2vb;
+}
+
+.title .sessionTitle {
+    font-size: 2.5vb;
+    vertical-align: middle;
+    text-align: center;
+    margin: auto;
+    font-family: Formula1-Black;
+    letter-spacing: 0.2vb;
+    color: darkgrey;
+}
+
+.lapCounter {
+    width: 100%;
+    border: 0.1vb solid grey;
+    border-right: none;
+    border-left: none;
+    vertical-align: top;
+    padding-top: 0.4vb;
+    padding-bottom: 0.3vb;
+    font-family: Formula1-Italic;
+}
+
+.lapCounter p {
+    text-align: center;
+    vertical-align: top;
+    font-size: 2vb;
+    font-weight: 100;
+}
+
+.lapCounter .currentLap {
+    margin-left: 0.5vb;
+    font-size: 2.5vb;
+}
+
+.lapCounter .totalLap {
+    vertical-align: top;
+}
+
+.conditions {
+    display: grid;
+    text-align: center;
+    font-family: Formula1-Bold;
+}
+
+.conditions > *,
+.conditions > *::after {
+    display: block;
+    width: 100%;
+    text-align: center;
+    font-size: 2.5vb;
+}
+
+.conditions .redflag {
+    background: var(--condition-red);
+    font-size: 3.5vb;
+    padding-top: 2vb;
+    padding-bottom: 2vb;
+    color: white;
+}
+.conditions .yellowflag {
+    background: var(--condition-yellow);
+    color: black;
+}
+.conditions .greenflag {
+    background: var(--condition-green);
+    color: black;
+}
+.conditions .greenflag::after {
+    background-color: black;
+    color: hsl(120, 100%, 50%);
+    content: "TRACK CLEAR";
+    font-family: Formula1-Regular;
+    font-size: 1.8vb;
+}
+
+.conditions .safetycar {
+    background: var(--condition-yellow);
+    color: black;
+}
+
+.safetycar::before {
+    /* content: "FIA"; */
+}
+
+.safetycar[data-ending="true"]::after {
+    background: black;
+    color: yellow;
+    content: "ENDING";
+}
+
+.conditions .vsc {
+    background: var(--condition-yellow);
+    color: black;
+}
+
+.drivers {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+.drivers .driver {
+    flex-grow: 1;
+}
+
+.drivers .driver:nth-child(1) {
+    background: linear-gradient(hsl(0, 0%, 35%), hsl(0, 0%, 15%), hsl(0, 0%, 15%));
+}
+
+.driver {
+    display: grid;
+    grid-template-columns: 2.7vb 5vb 5vb 1fr 2.5vb;
+    grid-template-rows: 1fr;
+    text-align: center;
+    background: hsl(0, 0%, 15%);
+
+    justify-content: center;
+    align-items: center;
+
+    font-size: 1.8vb;
+}
+
+.driver > * {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+}
+
+.drivers .driver[data-cond="OUT"] > * {
+    color: hsl(0, 0%, 40%);
+}
+
+.driver .position {
+    font-size: 1.3vb;
+    color: hsl(0, 0%, 80%);
+
+    border-right: 0.1vb solid silver;
+    background-color: hsl(0, 0%, 10%);
+    font-family: Formula1-Italic;
+}
+
+.driver .driverAbbriv {
+    font-family: Formula1-Bold;
+}
+
+.driver .tyres {
+    font-size: 1.5vb;
+}
+
+.tyres.H {
+    color: white;
+}
+.tyres.M {
+    color: yellow;
+}
+.tyres.S {
+    color: red;
+}
+.tyres.I {
+    color: green;
+}
+.tyres.W {
+    color: blue;
+}
+
+.driver .timeDelta {
+    font-size: 1.4vb;
+    font-family: Formula1-Italic;
+}

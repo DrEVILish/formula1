@@ -1,0 +1,50 @@
+{
+  "name": "formula1",
+  "version": "0.0.1",
+  "keywords": [
+    "nodecg-bundle"
+  ],
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "lint": "eslint './src/**/*.{js,jsx}' webpack.config.js",
+    "lint:fix": "eslint --fix './src/**/*.{js,jsx}' webpack.config.js",
+    "build": "cross-env NODE_ENV='production' NODE_PROJECT='config.webpack.json' webpack",
+    "watch": "cross-env NODE_ENV='production' NODE_PROJECT='config.webpack.json' webpack --watch"
+  },
+  "nodecg": {
+    "compatibleRange": "2",
+    "dashboardPanels": [
+      {
+        "name": "tower",
+        "title": "Tower",
+        "width": 3,
+        "file": "tower.html",
+        "headerColor": "#525F78"
+      },
+      {
+        "name": "teams",
+        "title": "Teams",
+        "width": 3,
+        "file": "teams.html",
+        "headerColor": "#525F78"
+      }
+    ],
+    "graphics": [
+      {
+        "file": "tower.html",
+        "width": 1920,
+        "height": 1080
+      }
+    ]
+  },
+  "dependencies": {
+    "nodecg": "",
+    "react": "",
+    "react-dom": "",
+    "react-flip-toolkit": "^7.1.0",
+    "underscore": "",
+    "@nodecg/react-hooks": ""
+  },
+  "devDependencies": {
+  }
+}
